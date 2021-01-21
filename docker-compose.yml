@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+  node-server:
+    build: ./server
+    image: dank-node
+    volumes:
+      - ./server:/app
+    ports:
+      - 8000:8000
+    container_name: node-server
+
+  react-server-dev:
+    build: ./client
+    image: dank-react
+    volumes:
+      - ./client:/ui
+    ports:
+      - 3000:3000
+    container_name: react-server-dev
+
+  redis:
+    image: redis
+    container_name: redis-dev
+    ports:
+      - 6379:6379
