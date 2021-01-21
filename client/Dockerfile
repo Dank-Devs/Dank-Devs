@@ -3,7 +3,6 @@ FROM node:14
 WORKDIR /ui
 
 COPY package.json /ui
-COPY yarn.lock /ui
 
 RUN yarn install
 
