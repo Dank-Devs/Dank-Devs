@@ -18,7 +18,7 @@ export default function Landing() {
               style={{ width: "1.6em", marginRight: "0.9em" }}
             ></img>
           </div>
-          <div  style={{marginTop:"0.18em"}}>
+          <div style={{ marginTop: "0.18em" }}>
             <span>
               <b>Login with GitHub</b>
             </span>
