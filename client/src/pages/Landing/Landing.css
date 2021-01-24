@@ -28,22 +28,7 @@
   margin-top: 3.4vh;
 }
 
-.github-login-button {
-    background-color: white; /* Green */
-    border-style: hidden;
-    border-radius: 0.5em;
-    color: black;
-    padding: 0.45em 1.7em;
-    text-align: center;
-    text-decoration: none;
-    display: flex;
-    font-size: 1.2em;
-    margin-bottom: 20vh;
-    margin-top: auto;
-    cursor: pointer;
-  }
-
-  .landing-footer{
-      background-color: #76FFBD;
-      height: 7vh;
-  }
+.landing-footer {
+  background-color: #76ffbd;
+  height: 7vh;
+}
