@@ -1,4 +1,48 @@
-.landing-main{
-    background-color: black;
-    height: 100vh;
+.landing-main {
+  background-color: black;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.04) 20%,
+      transparent 0
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.04) 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 1px 1px;
 }
+
+.landing-logo {
+  width: 9em;
+  margin-top: 19vh;
+}
+
+.landing-heading {
+  color: white;
+  font-family: "Podkova", serif;
+  font-weight: 800;
+  font-size: 4.2em;
+  margin-top: 4vh;
+}
+
+.github-login-button {
+    background-color: white; /* Green */
+    border-style: hidden;
+    border-radius: 0.5em;
+    color: black;
+    padding: 0.5em 1.7em;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 1.2em;
+    margin-top: 17vh;
+    cursor: pointer;
+  }
+
+  .landing-footer{
+      background-color: #76FFBD;
+      height: 7vh;
+  }
