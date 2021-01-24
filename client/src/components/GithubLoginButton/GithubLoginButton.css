@@ -1,0 +1,15 @@
+.github-login-button {
+    background-color: white; /* Green */
+    border-style: hidden;
+    border-radius: 0.5em;
+    color: black;
+    padding: 0.4em 1.7em;
+    padding-top: 0.6em;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 1.2em;
+    margin-bottom: 20vh;
+    margin-top: auto;
+    cursor: pointer;
+  }
