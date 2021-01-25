@@ -1,0 +1,52 @@
+.profile-main {
+  background-color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.04) 20%,
+      transparent 0
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.04) 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 1px 1px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 25vh;
+  height: 25vh;
+  margin-top: 12vh;
+  border-style: solid;
+  border-color: white;
+  border-width: 0.4em;
+  object-fit: none;
+}
+
+.profile-name {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 2.4em;
+  font-weight: 600;
+  margin-top: 5vh;
+}
+
+.profile-id {
+  font-family: "Poppins", sans-serif;
+  color: rgb(136, 136, 136);
+  font-size: 1.5em;
+  font-weight: 400;
+  margin-top: 1vh;
+}
+
+.profile-repo-card {
+  color: black;
+  font-size: 2em;
+  background: white;
+  padding: 1em 2em 1em 2em;
+  margin-top: 5vh;
+  min-width: 70vw;
+  border-radius: 0.8em;
+}
