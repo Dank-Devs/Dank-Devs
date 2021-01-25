@@ -7,11 +7,15 @@ export default function Landing() {
   return (
     <div className={"landing-container"}>
       <div className={"landing-main"}>
-        <img src={dd_logo} className={"landing-logo"}></img>
+        <img
+          src={dd_logo}
+          className={"landing-logo"}
+          alt={"dank devs logo"}
+        ></img>
         <span className={"landing-heading"}>
           India's hub for supporting <br /> open source
         </span>
-        <GithubLoginButton/>
+        <GithubLoginButton />
       </div>
       <div className={"landing-footer"}></div>
     </div>

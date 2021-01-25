@@ -9,6 +9,7 @@ export default function GithubLoginButton() {
         <img
           src={github_logo}
           style={{ width: "1.6em", marginRight: "0.9em" }}
+          alt={"github logo"}
         ></img>
       </div>
       <div style={{ marginTop: "0.2em" }}>
