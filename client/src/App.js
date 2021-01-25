@@ -1,10 +1,19 @@
-import './App.css';
+import "./App.css";
 import Landing from "./pages/Landing/Landing";
+import Profile from "./pages/Profile/Profile";
+import { Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Landing/>
+      <BrowserRouter>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
+      </BrowserRouter>
     </div>
   );
 }
