@@ -12,6 +12,8 @@ services:
     container_name: node-server
     environment:
       mode: dev
+    env_file:
+      - .server.env
 
   react-server-dev:
     build: ./client
@@ -23,6 +25,8 @@ services:
     container_name: react-server-dev
     environment:
       mode: dev
+    env_file:
+      - .client.env
 
   redis:
     image: redis
