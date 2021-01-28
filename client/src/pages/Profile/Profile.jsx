@@ -1,25 +1,16 @@
 import React from "react";
 import "./Profile.css";
 import dummy_profile_pic from "./../../common_assets/dummy_profile_pic.jpg";
-import { connect } from "react-redux";
 import RellaxWrapper from "react-rellax-wrapper";
 
-const mapStateToProps = (state) => {
-  return {
-    name: state.name,
-    id: state.id,
-    repos: state.repos,
-  };
-};
-
-export default connect(mapStateToProps)(function Profile(props) {
+export default function Profile(props) {
   function render_repos() {
-    return props.repos.map((repo) => (
+    const repo=["dono", "gatsby","doto","cgal"];
+
+    return repo.map((repo) => (
       <div className={"profile-repo-card"}>{repo}</div>
     ));
   }
-
-  console.log(props);
 
   return (
     <div className={"profile-container"}>
@@ -32,10 +23,10 @@ export default connect(mapStateToProps)(function Profile(props) {
               alt={"Profile Pic"}
             ></img>
             <div className={"profile-name"}>
-              <span>{props.name}</span>
+              <span>"The Name"</span>
             </div>
             <div className={"profile-id"}>
-              <span>{"@" + props.id}</span>
+              <span>{"@" + "userID"}</span>
             </div>
             <div style={{ marginBottom: "10vh", marginTop: "5vh" }}>
               {render_repos()}
@@ -45,4 +36,4 @@ export default connect(mapStateToProps)(function Profile(props) {
       </RellaxWrapper>
     </div>
   );
-});
+}
