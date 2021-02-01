@@ -42,11 +42,36 @@ const resolvers = {
   Query: {
     name: async (root, args, context) => {
       var data = JSON.stringify({
-        query: `query { 
-                        viewer { 
-                            name
-                        }
-                    }`,
+        query: `query {
+          user(login:"vishal19111999") {
+            login
+            name
+            repositoriesContributedTo(contributionTypes: PULL_REQUEST, first: 50, orderBy: {field: STARGAZERS, direction: DESC}) {
+              nodes {
+                name
+                owner {
+                  id
+                  login
+                  url
+                  avatarUrl
+                }
+                stargazerCount
+              }
+            }
+            bio
+            email
+            followers {
+              totalCount
+            }
+            following {
+              totalCount
+            }
+            avatarUrl
+            id
+          }
+        }
+        
+        `,
         variables: {},
       });
 
@@ -64,13 +89,14 @@ const resolvers = {
 
       await axios(config)
         .then((response) => {
-          name = response.data.data.viewer.name;
+          name = response.data.data.user.name;
+          console.log(response.data);
         })
         .catch((error) => {
           //   console.log(error);
+          console.log(response.data);
         });
 
-      console.log(context.access_token);
       return name;
     },
   },
