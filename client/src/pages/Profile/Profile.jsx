@@ -6,7 +6,11 @@ import { useQuery, gql } from "@apollo/client";
 
 const NAME_QUERY = gql`
   query {
-    name
+    user{
+      name
+      login
+      avatarUrl
+    }
   }
 `;
 
@@ -30,14 +34,14 @@ export default function Profile(props) {
             <RellaxWrapper speed={7}>
               <img
                 className={"profile-pic"}
-                src={dummy_profile_pic}
+                src={data.user.avatarUrl}
                 alt={"Profile Pic"}
               ></img>
               <div className={"profile-name"}>
-                <span>{data.name}</span>
+                <span>{data.user.name}</span>
               </div>
               <div className={"profile-id"}>
-                <span>{"@" + "userID"}</span>
+                <span>{"@" + data.user.login}</span>
               </div>
               <div style={{ marginBottom: "10vh", marginTop: "5vh" }}>
                 {render_repos()}
