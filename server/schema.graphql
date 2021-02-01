@@ -1,0 +1,40 @@
+type Owner {
+  id: ID!
+  login: String!
+  url: URI
+  avatarUrl: URI
+}
+
+type Nodes {
+  name: String!
+  owner: Owner!
+  stargazerCount: Int
+}
+
+type RepositoriesContributedTo {
+  nodes: [Nodes!]
+}
+
+type Followers {
+  totalCount: Int
+}
+
+type Following {
+  totalCount: Int
+}
+
+type User {
+  login: String!
+  name: String!
+  repositoriesContributedTo: RepositoriesContributedTo
+  bio: String
+  email: String
+  followers: Followers
+  following: Following
+  avatarUrl: URI
+  id: ID!
+}
+
+type Query {
+  user: User
+}
