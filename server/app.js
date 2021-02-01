@@ -10,7 +10,6 @@ const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const { verify } = require("crypto");
 const cors = require("cors");
-
 const app = express();
 
 // if(process.env.mode==="dev"){
@@ -33,20 +32,82 @@ app.use("/auth", authRouter);
 
 //graphql
 const typeDefs = gql`
+  type Owner {
+    id: ID!
+    login: String!
+    url: String
+    avatarUrl: String
+  }
+
+  type Nodes {
+    name: String!
+    owner: Owner!
+    stargazerCount: Int
+  }
+
+  type RepositoriesContributedTo {
+    nodes: [Nodes!]
+  }
+
+  type Followers {
+    totalCount: Int
+  }
+
+  type Following {
+    totalCount: Int
+  }
+
+  type User {
+    login: String!
+    name: String!
+    repositoriesContributedTo: RepositoriesContributedTo
+    bio: String
+    email: String
+    followers: Followers
+    following: Following
+    avatarUrl: String
+    id: ID!
+  }
+
   type Query {
-    name: String
+    user: User
   }
 `;
 
 const resolvers = {
   Query: {
-    name: async (root, args, context) => {
+    user: async (root, args, context) => {
       var data = JSON.stringify({
-        query: `query { 
-                        viewer { 
-                            name
-                        }
-                    }`,
+        query: `query {
+          user(login:"vishal19111999") {
+            login
+            name
+            repositoriesContributedTo(contributionTypes: PULL_REQUEST, first: 50, orderBy: {field: STARGAZERS, direction: DESC}) {
+              nodes {
+                name
+                owner {
+                  id
+                  login
+                  url
+                  avatarUrl
+                }
+                stargazerCount
+              }
+            }
+            bio
+            email
+            followers {
+              totalCount
+            }
+            following {
+              totalCount
+            }
+            avatarUrl
+            id
+          }
+        }
+        
+        `,
         variables: {},
       });
 
@@ -64,13 +125,14 @@ const resolvers = {
 
       await axios(config)
         .then((response) => {
-          name = response.data.data.viewer.name;
+          name = response.data.data.user;
+          console.log(response.data);
         })
         .catch((error) => {
           //   console.log(error);
+          console.log(response.data);
         });
 
-      console.log(context.access_token);
       return name;
     },
   },
