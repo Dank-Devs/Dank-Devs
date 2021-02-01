@@ -2,11 +2,14 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
+    "@apollo/client": "^3.3.7",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "graphql": "^15.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-rellax-wrapper": "^1.0.6",
@@ -27,7 +30,7 @@
     ]
   },
   "browserslist": {
-    "production": [
+    "duction": [
       ">0.2%",
       "not dead",
       "not op_mini all"

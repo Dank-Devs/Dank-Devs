@@ -7,7 +7,7 @@
   align-items: center;
 
   background-image: radial-gradient(
-      rgba(255, 255, 255, 0.04) 20%,
+      rgba(255, 255, 255, 0.06) 20%,
       transparent 0
     ),
     radial-gradient(rgba(255, 255, 255, 0.04) 20%, transparent 0);
