@@ -10,7 +10,7 @@ function App() {
           <Route exact path="/">
             <Landing />
           </Route>
-          <Route exact path="/profile">
+          <Route path="/profile">
             <Profile />
           </Route>
         </BrowserRouter>

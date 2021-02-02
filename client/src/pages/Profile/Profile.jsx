@@ -7,7 +7,7 @@ import add_friend_pic from "./../../common_assets/add_friend.svg";
 
 const NAME_QUERY = gql`
   query {
-    user {
+    user (login:"${window.location.pathname.slice(9)}"){
       name
       login
       avatarUrl
