@@ -61,7 +61,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user: User
+    user(login: String): User
   }
 `;
 
@@ -70,7 +70,7 @@ const resolvers = {
     user: async (root, args, context) => {
       var data = JSON.stringify({
         query: `query {
-          user(login:"vishal19111999") {
+          user(login:"${args.login}") {
             login
             name
             repositoriesContributedTo(contributionTypes: PULL_REQUEST, first: 50, orderBy: {field: STARGAZERS, direction: DESC}) {
@@ -116,10 +116,10 @@ const resolvers = {
       await axios(config)
         .then((response) => {
           name = response.data.data.user;
-          console.log(response.data);
+          console.log(args.login);
         })
         .catch((error) => {
-          //   console.log(error);
+          console.log(error);
           console.log(response.data);
         });
 
