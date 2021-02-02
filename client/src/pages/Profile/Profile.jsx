@@ -53,6 +53,7 @@ export default function Profile(props) {
               marginTop: "auto",
               marginBottom: "auto",
               marginLeft: "1.2em",
+              wordWrap: "break-word"
             }}
           >
             <a
