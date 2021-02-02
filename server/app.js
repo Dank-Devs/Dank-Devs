@@ -9,16 +9,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const { verify } = require("crypto");
-const cors = require("cors");
 const app = express();
-
-// if(process.env.mode==="dev"){
-// app.use(cors({
-//   origin: true,
-//   preflightContinue: true,
-//   credentials: true,
-// }));
-// }
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -106,7 +97,6 @@ const resolvers = {
             id
           }
         }
-        
         `,
         variables: {},
       });

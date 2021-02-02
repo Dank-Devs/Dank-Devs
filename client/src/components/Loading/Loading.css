@@ -1,0 +1,14 @@
+.loading-container{
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: black;
+    color: #76FFBD;
+}
+
+.loading-main-text{
+    font-size: 5vw;
+    color: #76FFBD;
+    font-weight: 600;
+    margin-left: 10vh;
+    font-family: "Poppins", sans-serif;
+}
