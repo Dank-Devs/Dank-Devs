@@ -1,0 +1,44 @@
+.feed-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  min-height: 100vh;
+  width: 100vw;
+}
+.feed-main{
+  max-width: 968px;
+}
+.feed-post-wrapper{
+  color: black;
+  font-weight: 700;
+  background: white;
+  padding: 1em 2.5em;
+  border-radius: 0.8em;
+  margin: 1em 0em;
+}
+.feed-post-meta{
+  display: flex;
+  align-items: center;
+}
+.feed-post-avtar{
+  width: 60px;
+  border-radius: 100%;
+}
+.feed-post-user{
+  margin-left: 10px;
+}
+.feed-post-main{
+  padding: 15px 0px;
+}
+.feed-post-action{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.feed-post-actions{
+  display: flex;
+  align-items: center;
+}
+.feed-post-icon{
+  margin-right: 3px;
+}
