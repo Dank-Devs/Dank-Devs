@@ -7,7 +7,6 @@ const { generateToken, authorize } = require("./util/jwt");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
-const { verify } = require("crypto");
 const app = express();
 
 app.use(logger("dev"));
