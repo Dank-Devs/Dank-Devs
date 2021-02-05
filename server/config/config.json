@@ -3,7 +3,7 @@
     "username": "dankAdmin",
     "password": "dankPassword",
     "database": "testDB",
-    "host": "postgres-db",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   }
 }
