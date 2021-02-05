@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "dankAdmin",
+    "password": "dankPassword",
+    "database": "testDB",
+    "host": "postgres-db",
+    "dialect": "postgres"
+  }
+}

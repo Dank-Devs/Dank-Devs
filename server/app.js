@@ -8,6 +8,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const app = express();
+const Sequelize = require("sequelize");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -19,11 +20,27 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 
-const typeDefs = require('./graphql/typeDefs');
-const resolvers = require('./graphql/resolver');
+const typeDefs = require("./graphql/typeDefs");
+const resolvers = require("./graphql/resolver");
 
 app.use(authorize);
 
+//postgres
+let sequelize = new Sequelize(
+  process.env.POSTGRES_DB,
+  process.env.POSTGRES_USER,
+  process.env.POSTGRES_PASSWORD,
+  { host: process.env.POSTGRES_HOST, dialect: "postgres" }
+);
+
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
+
+//apollo-server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
