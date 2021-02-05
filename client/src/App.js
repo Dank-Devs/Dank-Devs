@@ -4,6 +4,7 @@ import Profile from "./pages/Profile/Profile";
 import { Route, BrowserRouter } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Feed from "./pages/Feed/Feed";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/profile/:username" component={Profile} />
           <Route exact path="/feed" component={Feed} />
+          <Route exact path="/chat" component={Chat} />
         </BrowserRouter>
       </div>
   );

@@ -1,12 +1,21 @@
 nav{
   background-color: black;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   width: 100vw;
 }
 .nav-link{
-  margin: 10px;
-  padding: 5px;
+  margin: 12px 25px 12px 25px;
   color: white;
   font-size: x-large;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.6;
+  font-family: "poppins", sans-serif;
+  transition: 400ms;
+}
+
+.nav-link:hover{
+  opacity: 1;
+  color: #76ffbd;
 }
