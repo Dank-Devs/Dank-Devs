@@ -1,0 +1,25 @@
+.chat-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  min-height: 95vh;
+  width: 100vw;
+  font-family: "poppins", sans-serif;
+
+  background-image: radial-gradient(
+      rgba(255, 255, 255, 0.06) 20%,
+      transparent 0
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.04) 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 1px 1px;
+}
+
+.chat-main {
+  background-color: white;
+  border-style: hidden;
+  border-radius: 5vh;
+  width: 85vw;
+  margin-top: 10vh;
+  margin-bottom: 13vh;
+}
