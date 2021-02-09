@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Repository.belongsTo(models.Organisation, {
+        foreignKey: "org_id",
+        targetKey: "github_id",
+      });
     }
   }
   Repository.init(
@@ -22,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       repo_url: {
+        type: DataTypes.STRING,
+      },
+      org_id: {
+        allowNull: false,
         type: DataTypes.STRING,
       },
     },

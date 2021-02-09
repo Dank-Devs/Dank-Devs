@@ -9,6 +9,8 @@ const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const app = express();
 const Sequelize = require("sequelize");
+const { sequelize } = require("./models");
+const { User, Repository, Message, Organisation } = require("./models");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -25,19 +27,13 @@ const resolvers = require("./graphql/resolver");
 
 app.use(authorize);
 
-//postgres
-let sequelize = new Sequelize(
-  process.env.POSTGRES_DB,
-  process.env.POSTGRES_USER,
-  process.env.POSTGRES_PASSWORD,
-  { host: process.env.POSTGRES_HOST, dialect: "postgres" }
-);
-
 try {
-  sequelize.authenticate();
-  console.log('Connection has been established successfully.');
+  sequelize
+    .authenticate()
+    .then(() => console.log("Connection has been established successfully!"))
+    .catch((err) => console.log(err));
 } catch (error) {
-  console.error('Unable to connect to the database:', error);
+  console.error("Unable to connect to the database:", error);
 }
 
 //apollo-server

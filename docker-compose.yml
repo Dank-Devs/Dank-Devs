@@ -10,7 +10,7 @@ services:
       - 8000:8000
     container_name: node-server
     environment:
-      NODE_ENV: development
+      NODE_ENV: docker-dev
       POSTGRES_PASSWORD: dankPassword
       POSTGRES_USER: dankAdmin
       POSTGRES_DB: testDB

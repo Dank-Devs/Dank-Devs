@@ -9,6 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Message.belongsTo(models.User, {
+        foreignKey: "from_id",
+        targetKey: "github_id",
+      });
+      Message.belongsTo(models.Repository, {
+        foreignKey: "repo_id",
+        targetKey: "github_id",
+      });
+      Message.belongsTo(models.Organisation, {
+        foreignKey: "org_id",
+        targetKey: "github_id",
+      });
     }
   }
   Message.init(
@@ -25,9 +37,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      org_id:{
+      org_id: {
         allowNull: false,
-        type:DataTypes.STRING
+        type: DataTypes.STRING,
       },
       uuid: {
         defaultValue: DataTypes.UUIDV4,

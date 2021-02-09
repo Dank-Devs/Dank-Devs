@@ -13,6 +13,10 @@ module.exports = {
       repo_url: {
         type: Sequelize.STRING,
       },
+      org_id: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
