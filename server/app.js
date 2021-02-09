@@ -8,9 +8,13 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const app = express();
-const Sequelize = require("sequelize");
-const { sequelize } = require("./models");
-const { User, Repository, Message, Organisation } = require("./models");
+const {
+  sequelize,
+  User,
+  Repository,
+  Message,
+  Organisation,
+} = require("./models");
 
 app.use(logger("dev"));
 app.use(express.json());

@@ -1,17 +1,11 @@
 {
-  "development": {
+  "default": {
     "username": "dankAdmin",
     "password": "dankPassword",
     "database": "testDB",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
-  "docker-dev": {
-    "username": "dankAdmin",
-    "password": "dankPassword",
-    "database": "testDB",
-    "host": "postgres-dev",
-    "dialect": "postgres"
+  "dev": {
   }
-
 }
