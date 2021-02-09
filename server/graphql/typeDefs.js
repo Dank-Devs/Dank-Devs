@@ -12,6 +12,8 @@ module.exports = gql`
     name: String!
     owner: Owner!
     stargazerCount: Int
+    id: ID!
+    url: String
   }
 
   type RepositoriesContributedTo {

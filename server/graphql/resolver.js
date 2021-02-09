@@ -18,6 +18,8 @@ module.exports = {
                     avatarUrl
                   }
                   stargazerCount
+                  id
+                  url
                 }
               }
               bio
