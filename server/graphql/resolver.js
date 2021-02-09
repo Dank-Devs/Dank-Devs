@@ -18,6 +18,8 @@ module.exports = {
                     avatarUrl
                   }
                   stargazerCount
+                  id
+                  url
                 }
               }
               bio
@@ -61,4 +63,9 @@ module.exports = {
         return name;
       },
     },
+    Mutation:{
+      sendMessage: async (root, args, context) => {
+        return "new message created!"
+      }
+    }
   };

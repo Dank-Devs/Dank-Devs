@@ -5,7 +5,7 @@ module.exports = {
       github_id: {
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       github_login: {
         allowNull: false,

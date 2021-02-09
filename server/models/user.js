@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       github_id: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       github_login: {
         allowNull: false,
