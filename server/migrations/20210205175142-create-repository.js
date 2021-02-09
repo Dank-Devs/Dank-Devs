@@ -5,7 +5,7 @@ module.exports = {
       github_id: {
         primaryKey: true,
         unique: true,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       repo_name: {
         type: Sequelize.STRING,
@@ -15,7 +15,7 @@ module.exports = {
       },
       org_id: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

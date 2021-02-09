@@ -1,5 +1,5 @@
 {
-  "default": {
+  "development": {
     "username": "dankAdmin",
     "password": "dankPassword",
     "database": "testDB",
@@ -7,5 +7,6 @@
     "dialect": "postgres"
   },
   "dev": {
+    
   }
 }

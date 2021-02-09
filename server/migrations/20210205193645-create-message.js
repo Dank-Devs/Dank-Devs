@@ -10,19 +10,19 @@ module.exports = {
       },
       from_id: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       to_id: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       repo_id: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       org_id:{
         allowNull: false,
-        type:Sequelize.STRING
+        type:Sequelize.INTEGER
       },
       uuid: {
         defaultValue: Sequelize.UUIDV4,

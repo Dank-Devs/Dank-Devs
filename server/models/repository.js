@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       github_id: {
         primaryKey: true,
         unique: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       repo_name: {
         type: DataTypes.STRING,
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       org_id: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
     },
     {
