@@ -53,7 +53,7 @@ module.exports = {
         method: "post",
         url: "https://api.github.com/graphql",
         headers: {
-          Authorization: `Bearer ${context.access_token}`,
+          Authorization: `Bearer ${context.req.access_token}`,
           "Content-Type": "application/json",
         },
         data: data,
@@ -67,8 +67,8 @@ module.exports = {
           console.log(args.login);
         })
         .catch((error) => {
-          // console.log(error);
-          console.log(req.access_token);
+          console.log(error);
+          // console.log(req.access_token);
           // console.log(response.data);
         });
 

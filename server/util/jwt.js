@@ -12,6 +12,7 @@ const generateToken = (payload, options) => {
 };
 
 const authorize = async (req, res, next) => { 
+  console.log("hello");
   const authHeader = req.cookies.Authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
