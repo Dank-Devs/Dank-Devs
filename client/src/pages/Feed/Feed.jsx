@@ -5,21 +5,10 @@ import "./feed.css";
 import { ReactComponent as Applaud } from "./applaud.svg";
 import { ReactComponent as Comment } from "./comment.svg";
 
-const NAME_QUERY = gql`
-  query {
-    user(login: "ankiiitraj") {
-      name
-      login
-      avatarUrl
-      followers {
-        totalCount
-      }
-      bio
-    }
-  }
-`;
+
 
 const Post = ({ user, content }) => {
+  
   return (
     <>
       <div className="feed-post-wrapper">
@@ -59,6 +48,21 @@ const Post = ({ user, content }) => {
 };
 
 const Feed = () => {
+  
+  const NAME_QUERY = gql`
+  query {
+    user(login: "ankiiitraj") {
+      name
+      login
+      avatarUrl
+      followers {
+        totalCount
+      }
+      bio
+    }
+  }
+`;
+
   const { loading, error, data } = useQuery(NAME_QUERY);
   if (loading) return <Loading />;
   if (error) return <p>Error</p>;

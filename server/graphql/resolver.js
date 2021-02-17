@@ -1,10 +1,21 @@
 const axios = require("axios");
+const { PubSub, SubscriptionManager } = require("apollo-server-express");
+
+const pubsub = new PubSub();
+const chats = [{ content: "hello" }, { content: "bye" }];
+const CHAT_CHANNEL = "CHAT_CHANNEL";
 
 module.exports = {
-    Query: {
-      user: async (root, args, context) => {
-        var data = JSON.stringify({
-          query: `query {
+  Query: {
+    ping:()=>{
+      return "pong";
+    },
+    chats: (root, args, context) => {
+      return chats;
+    },
+    user: async (root, args, context) => {
+      var data = JSON.stringify({
+        query: `query {
             user(login:"${args.login}") {
               login
               name
@@ -35,37 +46,50 @@ module.exports = {
             }
           }
           `,
-          variables: {},
+        variables: {},
+      });
+
+      var config = {
+        method: "post",
+        url: "https://api.github.com/graphql",
+        headers: {
+          Authorization: `Bearer ${context.access_token}`,
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      let name = "not found";
+
+      await axios(config)
+        .then((response) => {
+          name = response.data.data.user;
+          console.log(args.login);
+        })
+        .catch((error) => {
+          // console.log(error);
+          console.log(req.access_token);
+          // console.log(response.data);
         });
-  
-        var config = {
-          method: "post",
-          url: "https://api.github.com/graphql",
-          headers: {
-            Authorization: `Bearer ${context.access_token}`,
-            "Content-Type": "application/json",
-          },
-          data: data,
-        };
-  
-        let name = "not found";
-  
-        await axios(config)
-          .then((response) => {
-            name = response.data.data.user;
-            console.log(args.login);
-          })
-          .catch((error) => {
-            console.log(error);
-            console.log(response.data);
-          });
-  
-        return name;
+
+      return name;
+    },
+  },
+  Mutation: {
+    sendMessage: (root, { to, content }, {}) => {
+      const chat = { to: to, content: content };
+
+      chats.push(chat);
+      pubsub.publish("CHAT_CHANNEL", { messageCreated: chat });
+
+      return chat;
+    },
+  },
+  Subscription: {
+    messageCreated: {
+      subscribe: (root, args, {}) => {
+        return pubsub.asyncIterator("CHAT_CHANNEL");
       },
     },
-    Mutation:{
-      sendMessage: async (root, args, context) => {
-        return "new message created!"
-      }
-    }
-  };
+  },
+};

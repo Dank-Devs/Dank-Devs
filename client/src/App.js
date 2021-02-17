@@ -5,6 +5,7 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Feed from "./pages/Feed/Feed";
 import Chat from "./pages/Chat/Chat";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/feed" component={Feed} />
           <Route exact path="/chat" component={Chat} />
         </BrowserRouter>
+        <Footer/>
       </div>
   );
 }
