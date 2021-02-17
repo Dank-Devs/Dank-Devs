@@ -55,7 +55,7 @@ const apolloServer = new ApolloServer({
     },
   },
   context: ({ req, res }) => ({
-    access_token: req.access_token || "",
+    req: req || "",
   }),
 });
 
