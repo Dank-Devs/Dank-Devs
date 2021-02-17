@@ -5,7 +5,8 @@ import { useQuery, gql } from "@apollo/client";
 import Loading from "./../../components/Loading/Loading";
 import add_friend_pic from "./../../common_assets/add_friend.svg";
 
-const NAME_QUERY = gql`
+export default function Profile(props) {
+  const PROFILE_QUERY = gql`
   query {
     user (login:"${window.location.pathname.slice(9)}"){
       name
@@ -26,8 +27,6 @@ const NAME_QUERY = gql`
     }
   }
 `;
-
-export default function Profile(props) {
   function render_repos() {
     const repos = data.user.repositoriesContributedTo.nodes;
     return repos.map((repo) => (
@@ -53,7 +52,7 @@ export default function Profile(props) {
               marginTop: "auto",
               marginBottom: "auto",
               marginLeft: "1.2em",
-              wordWrap: "break-word"
+              wordWrap: "break-word",
             }}
           >
             <a
@@ -101,14 +100,14 @@ export default function Profile(props) {
               margin: "auto 0 auto 0",
               cursor: "pointer",
             }}
-            alt={"follow"+repo.name}
+            alt={"follow" + repo.name}
           />
         </div>
       </div>
     ));
   }
 
-  const { loading, error, data } = useQuery(NAME_QUERY);
+  const { loading, error, data } = useQuery(PROFILE_QUERY);
   if (loading) return <Loading />;
   else if (error) return <p>error...</p>;
   else {

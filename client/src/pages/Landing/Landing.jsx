@@ -17,7 +17,6 @@ export default function Landing() {
         </span>
         <GithubLoginButton />
       </div>
-      <div className={"landing-footer"}></div>
     </div>
   );
 }

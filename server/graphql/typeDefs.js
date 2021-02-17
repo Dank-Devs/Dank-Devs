@@ -41,23 +41,32 @@ module.exports = gql`
   }
 
   type Query {
+    ping: String
+    chats: [Message]
     user(login: String): User
   }
 
   type Message {
-    to_id: String!
-    repo_id: String!
-    org_id: String!
-    content: String!,
-    uuid:String!
+    # to_id: String!
+    # repo_id: String!
+    # org_id: String!
+    # content: String!
+    # uuid: String!
+    to: String!
+    content: String!
   }
 
   type Mutation {
     sendMessage(
-      to_id: String!
-      repo_id: String!
-      org_id: String!
+      # to_id: String!
+      # repo_id: String!
+      # org_id: String!
+      to: String!
       content: String!
     ): Message
+  }
+
+  type Subscription {
+    messageCreated: Message
   }
 `;

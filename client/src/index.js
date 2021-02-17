@@ -8,13 +8,38 @@ import {
   ApolloProvider,
   HttpLink,
   InMemoryCache,
+  split,
 } from "@apollo/client";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { WebSocketLink } from "@apollo/client/link/ws";
+// import {
+//   SubscriptionClient,
+//   addGraphQLSubscriptions,
+// } from "subscriptions-transport-ws";
+
+const wsLink = new WebSocketLink({
+  uri: "ws://localhost:8000/graphql",
+  options: {
+    // reconnect: true,
+  },
+});
+
+const httpLink = new HttpLink({
+  uri: "/graphql",
+});
+
+const link = split(
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query);
+    return kind === "OperationDefinition" && operation === "subscription";
+  },
+  wsLink,
+  httpLink
+);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "/graphql",
-  }),
+  link: link,
 });
 
 ReactDOM.render(
