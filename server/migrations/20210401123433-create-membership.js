@@ -1,8 +1,8 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Messages", {
-      message_id: {
+    await queryInterface.createTable("Memberships", {
+      membership_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -12,22 +12,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      sender_id: {
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      uuid: {
-        defaultValue: Sequelize.UUIDV4,
+      role: {
         allowNull: false,
-        type: Sequelize.UUID,
-      },
-      status: {
-        allowNull: true,
         type: Sequelize.BOOLEAN,
-      },
-      content: {
-        allowNull: false,
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Messages");
+    await queryInterface.dropTable("Memberships");
   },
 };

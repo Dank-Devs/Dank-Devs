@@ -25,6 +25,7 @@ app.use("/auth", authRouter);
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolver");
+const { verify } = require("jsonwebtoken");
 
 app.use(authorize);
 
@@ -49,14 +50,33 @@ const apolloServer = new ApolloServer({
   subscriptions: {
     onConnect: (connectionParams, webSocket, context) => {
       console.log("Client connected");
+      return { Authorization: connectionParams.Authorization.split(" ")[1] };
     },
     onDisconnect: (webSocket, context) => {
       console.log("Client disconnected");
     },
   },
-  context: ({ req, res }) => ({
-    req: req || "",
-  }),
+  context: ({ req, connection }) => {
+    if (connection) {
+      verify(
+        connection.context.Authorization,
+        process.env.JWT_SECRET,
+        (err, user) => {
+          if (err) {
+            return res.status(403).json({
+              message: "Token expired or tampred, Login again",
+            });
+          }
+          const access_token = connection.context.Authorization || "";
+          return { access_token };
+        }
+      );
+      return "";
+    } else {
+      const access_token = req.access_token || "";
+      return { access_token };
+    }
+  },
 });
 
 apolloServer.applyMiddleware({ app });

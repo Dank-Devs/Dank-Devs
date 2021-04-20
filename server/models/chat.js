@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Message extends Model {
+  class Chat extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,23 +9,42 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Message.belongsTo(models.Chat, {
-        foreignKey: "chat_id",
-        targetKey: "chat_id",
+      Chat.belongsTo(models.Repository, {
+        foreignKey: "repo_id",
+        targetKey: "github_id",
       });
-      Message.belongsTo(models.User, {
-        foreignKey: "sender_id",
+      Chat.belongsTo(models.Organisation, {
+        foreignKey: "org_id",
         targetKey: "github_id",
       });
     }
   }
-  Message.init(
+
+  Chat.init(
     {
       chat_id: {
         allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      sender_id: {
+      title: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      description: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      type: {
+        allowNull: false,
+        type: DataTypes.BOOLEAN,
+      },
+      repo_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      org_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
@@ -34,19 +53,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.UUID,
       },
-      status: {
-        allowNull: true,
-        type: DataTypes.BOOLEAN,
-      },
-      content: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
     },
     {
       sequelize,
-      modelName: "Message",
+      modelName: "Chat",
     }
   );
-  return Message;
+  return Chat;
 };

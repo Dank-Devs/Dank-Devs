@@ -1,13 +1,12 @@
 const axios = require("axios");
-const { PubSub, SubscriptionManager } = require("apollo-server-express");
 
-const pubsub = new PubSub();
+const pubsub = require("../util/pubsub");
 const chats = [{ content: "hello" }, { content: "bye" }];
 const CHAT_CHANNEL = "CHAT_CHANNEL";
 
 module.exports = {
   Query: {
-    ping:()=>{
+    ping: () => {
       return "pong";
     },
     chats: (root, args, context) => {
@@ -53,7 +52,7 @@ module.exports = {
         method: "post",
         url: "https://api.github.com/graphql",
         headers: {
-          Authorization: `Bearer ${context.req.access_token}`,
+          Authorization: `Bearer ${context.access_token}`,
           "Content-Type": "application/json",
         },
         data: data,
