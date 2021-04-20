@@ -12,15 +12,17 @@ import {
 } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/client/link/ws";
-// import {
-//   SubscriptionClient,
-//   addGraphQLSubscriptions,
-// } from "subscriptions-transport-ws";
+import getCookie from "./util/getCookie";
+
+let auth = getCookie("Authorization");
 
 const wsLink = new WebSocketLink({
   uri: "ws://localhost:8000/graphql",
   options: {
-    // reconnect: true,
+    reconnect: true,
+    connectionParams: {
+      Authorization: auth
+    },
   },
 });
 

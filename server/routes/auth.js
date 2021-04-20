@@ -43,7 +43,6 @@ router.get("/callback", async (req, res, next) => {
         avatar_url: avatar_url,
       }, // if it doesn't exist, we create it with this additional data
     });
-    // console.log(username);
 
     res.redirect(302, "http://localhost:3000/feed");
   } catch (e) {
