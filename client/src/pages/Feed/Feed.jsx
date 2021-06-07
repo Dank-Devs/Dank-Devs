@@ -13,7 +13,7 @@ const Post = ({ user, content }) => {
     <>
       <div className="feed-post-wrapper">
         <div className="feed-post-meta">
-          <img className="feed-post-avtar" src={user.avatarUrl} />
+          <img className="feed-post-avtar" src={user.avatarUrl} alt={"avatar image"}/>
           <div className="feed-post-user">
             <strong>{user.login}</strong>
             <div style={{ color: "#00000099" }}>{user.bio}</div>
