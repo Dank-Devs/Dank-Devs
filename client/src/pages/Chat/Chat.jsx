@@ -51,7 +51,8 @@ export default function Chat() {
 	`;
 
 	const Messages = () => {
-		const { loading, error, data } = useQuery(GET_MESSAGES);
+		//full form is {loading,error,data}
+		const { error, data } = useQuery(GET_MESSAGES);
 		if (error) console.log(error);
 		if (!data) {
 			return null;
@@ -61,7 +62,7 @@ export default function Chat() {
 	};
 
 	const NewMessage = () => {
-		const { loading, error, data } = useSubscription(SUBSCRIBE);
+		const { error, data } = useSubscription(SUBSCRIBE);
 		if (error) console.log(error);
 		if (!data) {
 			return null;
@@ -107,10 +108,10 @@ export default function Chat() {
 		));
 	}
 
-	{
+	
 		Messages();
 		NewMessage();
-	}
+	
 
 	const { loading, error, data } = useQuery(PROFILE_QUERY);
 	if (loading) return <Loading />;
